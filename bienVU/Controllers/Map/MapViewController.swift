@@ -80,6 +80,24 @@ class MapViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if #available(iOS 15, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+            appearance.backgroundColor = .black
+            let proxy = UINavigationBar.appearance()
+            proxy.tintColor = UIColor.white
+            proxy.standardAppearance = appearance
+            proxy.scrollEdgeAppearance = appearance
+            self.navigationController?.navigationBar.standardAppearance = appearance
+            self.navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        } else {
+            navigationController?.navigationBar.barTintColor = UIColor.white
+        }
+        addBottomSheetView()
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -133,19 +151,28 @@ class MapViewController: UIViewController {
         
         // Put the search bar in the navigation bar.
         if let searchBar = searchController?.searchBar {
-            
+            UIAccessibility.post(notification: .layoutChanged, argument: searchBar)
             searchBar.placeholder = Constants.PlaceHolder.saisirAdresse
-            
             searchBar.tintColor = UIColor.white
             searchBar.isTranslucent = false
+            searchBar.accessibilityLabel = Constants.PlaceHolder.saisirAdresse
+            searchBar.accessibilityHint = Constants.AccessibilityHint.searchBarHint
+            searchBar.accessibilityTraits = .searchField
+            
             if #available(iOS 13.0, *) {
-                searchBar.searchTextField.backgroundColor=UIColor.white
-                searchBar.searchTextField.tintColor=UIColor.black
+                searchBar.searchTextField.backgroundColor = UIColor.white
+                searchBar.searchTextField.tintColor = UIColor.black
+                searchBar.searchTextField.adjustsFontForContentSizeCategory = true
+                searchBar.searchTextField.font = UIFont.preferredFont(forTextStyle: .caption2)
+                let appearance = UINavigationBarAppearance()
+                appearance.configureWithOpaqueBackground()
+                appearance.backgroundColor = .black
+                self.navigationController?.navigationBar.standardAppearance = appearance
+                self.navigationController?.navigationBar.scrollEdgeAppearance = self.navigationController?.navigationBar.standardAppearance
             }
             
-            searchBar.layer.cornerRadius = 10;
-            self.setNavigationTitleView(withSearchBar: searchBar)
-            
+            searchBar.layer.cornerRadius = 10
+            setNavigationTitleView(withSearchBarController: searchController!)
         }
         
         self.navigationController?.navigationBar.isTranslucent = false
@@ -186,22 +213,24 @@ class MapViewController: UIViewController {
     
     /// Permet de positionner la SearchBar spécifié sur la barre de navigation
     ///
-    func setNavigationTitleView(withSearchBar searchBar: UISearchBar) {
-        if #available(iOS 11.0, *) {
-            // For iOS 11+, fix size to 32 for navigationbar
-            //searchBar.heightAnchor.constraint(equalToConstant: 44).isActive = true
-            let searchBarContainer = SearchBarContainerView(customSearchBar: searchBar)
-            searchBarContainer.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 32)
-            self.navigationItem.titleView = searchBarContainer
-        } else {
-            searchBar.sizeToFit()
-            self.navigationItem.titleView = searchBar
+    func setNavigationTitleView(withSearchBarController searchBarController: UISearchController) {
+        navigationItem.searchController = searchBarController
+        navigationItem.title = Constants.TabBarTitle.carte
+        navigationItem.titleView?.isUserInteractionEnabled = true
+        navigationItem.titleView?.becomeFirstResponder()
+        if #available(iOS 13.0, *) {
+            navigationItem.titleView?.accessibilityRespondsToUserInteraction = true
         }
-        
+        navigationItem.titleView?.accessibilityLabel = Constants.TabBarTitle.carte
+        navigationItem.titleView?.accessibilityTraits = .header
+        navigationItem.titleView?.isAccessibilityElement = true
+
         let menuBtn = UIButton(type: .custom)
         menuBtn.frame = CGRect(x: 0.0, y: 0.0, width: 44, height: 44)
-        menuBtn.setImage(UIImage(named:Constants.Image.favorite), for: .normal)
-        menuBtn.addTarget(self, action: #selector(addTapped), for:.touchDown)
+        menuBtn.setImage(UIImage(named: Constants.Image.favorite), for: .normal)
+        menuBtn.addTarget(self, action: #selector(addTapped), for: .touchDown)
+        menuBtn.accessibilityTraits = .button
+        menuBtn.accessibilityLabel = Constants.AccessibilityLabel.favoriteAdressButton
         let menuBarItem = UIBarButtonItem(customView: menuBtn)
         
         let currWidth = menuBarItem.customView?.widthAnchor.constraint(equalToConstant: 25)
@@ -209,7 +238,7 @@ class MapViewController: UIViewController {
         let currHeight = menuBarItem.customView?.heightAnchor.constraint(equalToConstant: 25)
         currHeight?.isActive = true
         
-        self.navigationItem.rightBarButtonItem = menuBarItem
+        navigationItem.rightBarButtonItem = menuBarItem
     }
     
     @objc func addTapped() {
@@ -284,14 +313,14 @@ class MapViewController: UIViewController {
         if ContextManager.shared.typeContribution == .outdoor {
             // Changement du placeholder pour anomalie outdoor
             searchController?.searchBar.placeholder = Constants.PlaceHolder.saisirAdresse
-            self.setNavigationTitleView(withSearchBar: (searchController?.searchBar)!)
+            setNavigationTitleView(withSearchBarController: searchController!)
         } else {
             // Changement du placeholder en fonction du Type Equipement
             customSearchController?.searchBar.placeholder = ContextManager.shared.typeEquipementSelected?.placeholder
             equipementSearchController?.equipements = ReferalManager.shared.getEquipements(forTypeEquipementId: (ContextManager.shared.typeEquipementSelected?.typeEquipementId)!)!
             equipementSearchController?.equipements.sort(by: { $0.name.caseInsensitiveCompare($1.name) == .orderedAscending })
             equipementSearchController?.tableView.reloadData()
-            self.setNavigationTitleView(withSearchBar: (customSearchController?.searchBar)!)
+            setNavigationTitleView(withSearchBarController: searchController!)
                         
             // hide uber label
             self.shouldDisplayUberPin(yesWeCan: false)

@@ -45,6 +45,16 @@ class AddAnomalyViewController: UIViewController, UITextFieldDelegate, UIPickerV
     //MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.titleView?.isAccessibilityElement = true
+        navigationItem.leftBarButtonItem?.accessibilityLabel = Constants.TitleButton.close
+        if #available(iOS 13.0, *) {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = .black
+            appearance.titleTextAttributes = convertToOptionalNSAttributedStringKeyDictionary([NSAttributedString.Key.foregroundColor.rawValue: UIColor.white])!
+            self.navigationController?.navigationBar.standardAppearance = appearance
+            self.navigationController?.navigationBar.scrollEdgeAppearance = self.navigationController?.navigationBar.standardAppearance
+        }
         
         tableViewAddAnomaly.delegate = self
         tableViewAddAnomaly.dataSource = self
@@ -851,4 +861,8 @@ extension AddAnomalyViewController: CloseDelegate {
 }
 
 
-
+// Helper function inserted by Swift 4.2 migrator.
+private func convertToOptionalNSAttributedStringKeyDictionary(_ input: [String: Any]?) -> [NSAttributedString.Key: Any]? {
+    guard let input = input else { return nil }
+    return Dictionary(uniqueKeysWithValues: input.map { key, value in (NSAttributedString.Key(rawValue: key), value) })
+}

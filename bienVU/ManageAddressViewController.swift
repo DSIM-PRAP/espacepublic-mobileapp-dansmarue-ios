@@ -28,19 +28,17 @@ class ManageAddressViewController: UIViewController {
         delegate.searchController?.isActive = false
         // Put the search bar in the navigation bar.
         if let searchBar = delegate.searchController?.searchBar {
-            
             searchBar.placeholder = Constants.PlaceHolder.saisirAdresse
             
             searchBar.tintColor = UIColor.white
             searchBar.isTranslucent = false
             if #available(iOS 13.0, *) {
-                searchBar.searchTextField.backgroundColor=UIColor.white
-                searchBar.searchTextField.tintColor=UIColor.black
+                searchBar.searchTextField.backgroundColor = UIColor.white
+                searchBar.searchTextField.tintColor = UIColor.black
             }
             
-            searchBar.layer.cornerRadius = 10;
-            delegate.setNavigationTitleView(withSearchBar: searchBar)
-            
+            searchBar.layer.cornerRadius = 10
+            delegate.setNavigationTitleView(withSearchBarController: delegate.searchController!)
         }
     }
     

@@ -287,6 +287,7 @@ struct Constants {
         static let declarerCommeResolue = "Déclarer comme résolue"
         static let allow = "Autoriser"
         static let refuse = "Refuser"
+        static let close = "Fermer"
     }
     
     struct PlaceHolder {
@@ -358,6 +359,7 @@ struct Constants {
     }
     
     enum AccessibilityHint {
+        static let searchBarHint = "Saisissez l'adresse de l'anomalie, champ à autocomplétion activable à partir de la saisie du premier caractère"
         static let searchBarTypeHint = "Saisissez le type de l'anomalie, champ à autocomplétion activable à partir de la saisie de trois caractères"
     }
     
