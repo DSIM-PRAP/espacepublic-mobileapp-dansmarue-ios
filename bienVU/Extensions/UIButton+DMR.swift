@@ -199,6 +199,7 @@ class UIButton_Solved: UIButton {
         self.setTitle(Constants.TitleButton.declarerCommeResolue,for: .normal)
         self.titleLabel?.font = UIFont(name: Constants.fontDmr, size: 20.0)
         self.backgroundColor = UIColor.pinkDmr()
+        self.isEnabled = false
     }
 }
 
