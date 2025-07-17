@@ -212,6 +212,7 @@ struct Constants {
         static let adresseHorsParis = "Impossible d'ajouter une adresse hors Plaine commune aux favoris"
         static let maintenance = "\nL'application bienVU est actuellement en maintenance.\n\nMerci d'essayer ultérieurement."
         static let searchAnomaly = "Renseigner ci-dessous le numéro exact de l’anomalie"
+        static let errorHorsTerritoire = "\nL\'adresse est située en dehors du territoire."
     }
     
     struct LabelMessage {

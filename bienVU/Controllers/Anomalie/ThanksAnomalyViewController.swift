@@ -171,7 +171,7 @@ class ThanksAnomalyViewController: UIViewController {
             
             DispatchQueue.global().async {
                 //Envoie de la requete si l'utilisateur se connecte avec son compte parisien ou entre son adresse mail.
-                RestApiManager.sharedInstance.saveIncident(anomalie: self.currentAnomaly!) { (result: Bool) in
+                RestApiManager.sharedInstance.saveIncident(anomalie: self.currentAnomaly!) { (result: Bool, isErreurHorsTerritoire: Bool) in
                     
                     if result {
                         print("Enregistrement des photos pour l'incident \(result)")
@@ -182,8 +182,14 @@ class ThanksAnomalyViewController: UIViewController {
                             self.closeDelegate?.displayThanks()
                         }
                     } else {
-                        print("Erreur sur l'enregistrement de l'incident")
-                        self.closeForTimeout()
+                        if isErreurHorsTerritoire {
+                            print("Erreur sur l'enregistrement de l'incident - hors territoire")
+                            self.closeForHorsTerritoire()
+                        }
+                        else {
+                            print("Erreur sur l'enregistrement de l'incident")
+                            self.closeForTimeout()
+                        }
                     }
                 }
             }
@@ -220,6 +226,27 @@ class ThanksAnomalyViewController: UIViewController {
         // Present Dialog message
         self.present(alertController, animated: true, completion:nil)
         
+    }
+    
+    @objc func closeForHorsTerritoire() {
+        self.timer.invalidate()
+        
+        //message alerte
+        let alertController = UIAlertController(title: Constants.AlertBoxTitle.information, message: Constants.AlertBoxMessage.errorHorsTerritoire, preferredStyle: .alert)
+        // Create OK button
+        let OKAction = UIAlertAction(title: Constants.AlertBoxTitle.ok, style: .default) {
+            (action:UIAlertAction!) in
+            
+            SaveAnomalyActivityIndicator.shared.hideOverlayView()
+            self.currentAnomaly?.anomalieStatus = .Brouillon
+            self.currentAnomaly?.saveToDraft()
+            self.dismiss(animated: true)
+            self.closeDelegate?.displayMap()
+        }
+        alertController.addAction(OKAction)
+        
+        // Present Dialog message
+        self.present(alertController, animated: true, completion:nil)
     }
 }
 

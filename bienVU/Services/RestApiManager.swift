@@ -385,7 +385,7 @@ class RestApiManager: NSObject {
     /// - Parameters:
     ///   - anomalie: instance de l'anomalie à enregistrer
     ///   - onCompletion: Identifiant de l'anomalie nouvellement créée
-    func saveIncident(anomalie: Anomalie, onCompletion: @escaping (Bool) -> Void) {
+    func saveIncident(anomalie: Anomalie, onCompletion: @escaping (Bool, Bool) -> Void) {
         var route = Constants.Services.apiBaseUrl + Constants.Services.apiUrl
         
         let uuid = UIDevice.current.identifierForVendor?.uuidString ?? "-1"
@@ -453,23 +453,23 @@ class RestApiManager: NSObject {
                                                         }
                                                         self.appelWorkflow(baseUrl: route, incidentId: anomalie.id, onCompletion: { (result: Bool) in
                                                             print("Workflow lancé...")
-                                                            onCompletion(result)
+                                                            onCompletion(result, false)
                                                         })
                                                     } else {
                                                         print("Erreur lors de l'upload de la photo 2")
-                                                        onCompletion(false)
+                                                        onCompletion(false, false)
                                                     }
                                                 }
                                             } else {
                                                 self.appelWorkflow(baseUrl: route, incidentId: anomalie.id, onCompletion: { (result: Bool) in
                                                     print("Workflow lancé...")
-                                                    onCompletion(result)
+                                                    onCompletion(result, false)
                                                     
                                                 })
                                             }
                                         } else {
                                             print("Erreur lors de l'upload de la photo 1")
-                                            onCompletion(false)
+                                            onCompletion(false, false)
                                         }
                                     }
                                 }
@@ -478,10 +478,12 @@ class RestApiManager: NSObject {
                     }
                 }
             } else if let jsonErr = json.dictionary {
-                print("Erreur lors de la création de l'anomalie : \(String(describing: jsonErr["error_message"]?.stringValue))")
+                let erreur = String(describing: jsonErr["error_message"]?.stringValue)
+                print("Erreur lors de la création de l'anomalie : \(erreur)")
+                let isErreurHorsTerritoire = erreur.contains("Etes vous bien dans Paris")
                 anomalie.anomalieStatus = AnomalieStatus.APublier
                 AnomalieBrouillon.shared.append(anomalie: anomalie)
-                onCompletion(false)
+                onCompletion(false, isErreurHorsTerritoire)
             }
             
             
