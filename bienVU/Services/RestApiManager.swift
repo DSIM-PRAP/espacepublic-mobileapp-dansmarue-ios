@@ -1395,24 +1395,40 @@ class RestApiManager: NSObject {
     /// Méthode permettant de tester si le BO est accessible
     func isDMROnline(onCompletion: @escaping (Bool) -> Void) {
         let route = Constants.Services.apiBaseUrl + "signalement/isDmrOnline"
-                
-        let url = URL(string: route)!
-        var isOnline = false
-        
-        let task = URLSession.shared.dataTask(with: url) {(data, response, error) in
-            guard let data = data else { return }
-            print(String(data: data, encoding: .utf8)!)
+        guard let url = URL(string: route) else {
+            onCompletion(false)
+            return
+        }
+
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            var isOnline = false
+
+            defer {
+                DispatchQueue.main.async {
+                    onCompletion(isOnline)
+                }
+            }
+
+            guard let data = data, error == nil else {
+                print("Erreur réseau : \(error?.localizedDescription ?? "inconnue")")
+                return
+            }
+
+            print("Réponse brute : \(String(data: data, encoding: .utf8) ?? "nil")")
+
             do {
-                if let convertedJsonIntoDict = try JSONSerialization.jsonObject(with: data, options: []) as? NSDictionary {
-                    isOnline = convertedJsonIntoDict["online"] as! Bool
-               }
-            } catch let error as NSError {
-                print(error.localizedDescription)
+                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
+                   let online = json["online"] as? Bool {
+                    isOnline = online
+                } else {
+                    print("Format JSON inattendu")
+                }
+            } catch {
+                print("Erreur de parsing JSON : \(error.localizedDescription)")
             }
         }
 
         task.resume()
-        onCompletion(isOnline)
     }
     
     

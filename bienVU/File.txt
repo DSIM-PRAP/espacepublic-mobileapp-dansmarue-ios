@@ -1,0 +1,3 @@
+Ouvre ton Main.storyboard.
+Sélectionne SplashViewController.
+Coche "Is Initial View Controller" dans l’inspecteur d’attributs.

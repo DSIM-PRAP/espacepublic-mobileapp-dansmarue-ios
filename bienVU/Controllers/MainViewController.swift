@@ -12,62 +12,44 @@ import SwiftyJSON
 
 class MainViewController: UITabBarController {
     
-    //MARK: - View lifecycle
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        //Vérification accessibilité BO
-        RestApiManager.sharedInstance.isDMROnline { (isDMROnline) in
-            if !isDMROnline {
-                let alert = UIAlertController(title: Constants.AlertBoxTitle.information, message: Constants.AlertBoxMessage.maintenance, preferredStyle: UIAlertController.Style.alert)
-                let okBtn = UIAlertAction(title:"Ok" , style: .default, handler: {(_ action: UIAlertAction) -> Void in
-                })
-                alert.addAction(okBtn)
-                self.present(alert, animated: true, completion: nil)
+        override func viewDidLoad() {
+                super.viewDidLoad()
+
+                configureTabBarItems()
+
+                // Customisation de la barre de navigation
+                UINavigationBar.appearance().tintColor = .white
+                UINavigationBar.appearance().barTintColor = UIColor.pinkDmr()
+                UINavigationBar.appearance().titleTextAttributes = convertToOptionalNSAttributedStringKeyDictionary([
+                    NSAttributedString.Key.foregroundColor.rawValue: UIColor.white
+                ])
+                UITabBar.appearance().tintColor = UIColor.pinkButtonDmr()
+
+                // Chargement des données
+                getCategories()
+                getEquipements()
+                isLatestVersion()
+
+                // Authentification automatique
+                User.shared.automaticAuthentification()
+
+                // Notifications
+                NotificationCenter.default.addObserver(
+                    forName: Notification.Name(rawValue: Constants.NoticationKey.pushNotification),
+                    object: nil,
+                    queue: nil,
+                    using: displayProfil
+                )
             }
-        }
-        
-        configureTabBarItems()
-        //Customisation de la bar de naviguation
-        UINavigationBar.appearance().tintColor = .white
-        UINavigationBar.appearance().barTintColor = UIColor.pinkDmr()
-        UINavigationBar.appearance().titleTextAttributes = convertToOptionalNSAttributedStringKeyDictionary([NSAttributedString.Key.foregroundColor.rawValue:UIColor.white])
-
-        UITabBar.appearance().tintColor = UIColor.pinkButtonDmr()
-        
-        //Chargement des catégories/Types d'anomalies outdoor
-        getCategories()
-        //Chargement des types équipements et équipements
-        getEquipements()
-        
-        //Ckeck si une MAJ est disponible
-        isLatestVersion()
-
-        // Authentification automatique de l'utilisateur
-        User.shared.automaticAuthentification()
-        
-        let nc = NotificationCenter.default
-        nc.addObserver(forName:Notification.Name(rawValue: Constants.NoticationKey.pushNotification), object:nil, queue:nil, using:displayProfil)
-    }
+     
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        let hasAlreadyBeenConnected = UserDefaults.standard.bool(forKey: "hasAlreadyBeenConnected")
-        
-        if !hasAlreadyBeenConnected {
+
             
-            //Redirect to walkthrough view
-            let welcomeStoryboard = UIStoryboard(name: Constants.StoryBoard.welcome, bundle: nil)
-            let welcomeViewController = welcomeStoryboard.instantiateViewController(withIdentifier: "WelcomeViewController") as! WelcomeViewController
-            welcomeViewController.modalPresentationStyle = .fullScreen
-            
-            self.navigationController?.addChild(welcomeViewController)
-            self.present(welcomeViewController, animated: true, completion: nil)
-            
-        }
         //showOptinPopUp()
     }
+    
 
     // MARK: - Other Methods
     func configureTabBarItems() {

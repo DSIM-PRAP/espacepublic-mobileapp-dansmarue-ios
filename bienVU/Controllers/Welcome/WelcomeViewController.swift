@@ -10,6 +10,8 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
     
+    var shouldShowMaintenanceAlert : Bool = false
+    
     //MARK: - IBOutlets
     @IBOutlet var sliderView: UIView!
     @IBOutlet var startButton: UIButton!
@@ -29,8 +31,10 @@ class WelcomeViewController: UIViewController {
     
     //MARK: - IBActions
     @IBAction func beginApp(_ sender: UIButton) {
-        UserDefaults.standard.set(true, forKey: Constants.Key.hasAlreadyBeenConnected)
+    
+        UserDefaults.standard.set(true, forKey: "hasAlreadyBeenConnected")
         self.dismiss(animated: true, completion: nil)
+
     }
     
 }
