@@ -142,29 +142,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     // Affiche un message provenant du BO
     private func showOpeningMessage() {
-        RestApiManager.sharedInstance.getOpeningMessage { messageBO in
-            if(messageBO != "") {
-                //Récupération du titre et du message
-                let messageBOArr = messageBO.components(separatedBy: ".")
-                
-                var titrePopup = "Information"
-                var textPopup = ""
-                
-                if (messageBOArr.count>1) {
-                    titrePopup = messageBOArr[0]
-                    textPopup = messageBO.replacingOccurrences(of: messageBOArr[0] + ".", with: "")
+        RestApiManager.sharedInstance.getOpeningMessage { messageBO, online in
+            DispatchQueue.main.async {
+                if online {
+                    guard !messageBO.isEmpty else { return }
+                    
+                    let messageBOArr = messageBO.components(separatedBy: ".")
+                    var titrePopup = "Information"
+                    var textPopup = ""
+                    
+                    if messageBOArr.count > 1 {
+                        titrePopup = messageBOArr[0].trimmingCharacters(in: .whitespacesAndNewlines)
+                        textPopup = messageBO
+                            .replacingOccurrences(of: messageBOArr[0] + ".", with: "")
+                            .trimmingCharacters(in: .whitespacesAndNewlines)
+                    } else {
+                        textPopup = messageBO.trimmingCharacters(in: .whitespacesAndNewlines)
+                    }
+                    
+                    let alert = UIAlertController(title: titrePopup, message: textPopup, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Fermer", style: .default))
+                    
+                    self.window?.rootViewController?.present(alert, animated: true)
+                    
                 } else {
-                    //Pas de titre
-                    textPopup = messageBO
+                    let alert = UIAlertController(
+                        title: Constants.AlertBoxTitle.information,
+                        message: Constants.AlertBoxMessage.maintenance,
+                        preferredStyle: .alert
+                    )
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default))
+                    
+                   
+                
+                    if let vc = self.topViewController() {
+                                   vc.present(alert, animated: true)
+                               } else {
+                                   print("⚠️ Aucun ViewController actif trouvé")
+                               }
+
+
                 }
-                
-                let alert = UIAlertController(title: titrePopup , message: textPopup, preferredStyle: UIAlertController.Style.alert)
-                
-                let fermerBtn = UIAlertAction(title: "Fermer", style: .default, handler: {(_ action: UIAlertAction) -> Void in})
-                alert.addAction(fermerBtn)
-                self.window?.rootViewController?.present(alert, animated: true, completion: nil)
             }
         }
+    }
+    
+    func topViewController() -> UIViewController? {
+        guard let windowScene = UIApplication.shared.connectedScenes
+            .filter({ $0.activationState == .foregroundActive })
+            .first as? UIWindowScene,
+              let rootVC = windowScene.windows.first(where: { $0.isKeyWindow })?.rootViewController else {
+            return nil
+        }
+        
+        var topVC = rootVC
+        while let presentedVC = topVC.presentedViewController {
+            topVC = presentedVC
+        }
+        return topVC
     }
     
     private func popupUpdateDialogue(){

@@ -12,6 +12,7 @@ import SwiftyJSON
 
 class MainViewController: UITabBarController {
     
+<<<<<<< Updated upstream
         override func viewDidLoad() {
                 super.viewDidLoad()
 
@@ -42,14 +43,87 @@ class MainViewController: UITabBarController {
                 )
             }
      
+=======
+    private var didShowOpeningPopup = false
+    
+    //MARK: - View lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        
+        
+        configureTabBarItems()
+        //Customisation de la bar de naviguation
+        UINavigationBar.appearance().tintColor = .white
+        UINavigationBar.appearance().barTintColor = UIColor.pinkDmr()
+        UINavigationBar.appearance().titleTextAttributes = convertToOptionalNSAttributedStringKeyDictionary([NSAttributedString.Key.foregroundColor.rawValue:UIColor.white])
+
+        UITabBar.appearance().tintColor = UIColor.pinkButtonDmr()
+        
+        //Chargement des catégories/Types d'anomalies outdoor
+        getCategories()
+        //Chargement des types équipements et équipements
+        getEquipements()
+        
+        //Ckeck si une MAJ est disponible
+        isLatestVersion()
+
+        // Authentification automatique de l'utilisateur
+        User.shared.automaticAuthentification()
+        
+        let nc = NotificationCenter.default
+        nc.addObserver(forName:Notification.Name(rawValue: Constants.NoticationKey.pushNotification), object:nil, queue:nil, using:displayProfil)
+    }
+>>>>>>> Stashed changes
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
+<<<<<<< Updated upstream
             
         //showOptinPopUp()
+=======
+        let hasAlreadyBeenConnected = UserDefaults.standard.bool(forKey: Constants.Key.hasAlreadyBeenConnected)
+        if !hasAlreadyBeenConnected {
+            // Affiche Welcome
+            let welcomeStoryboard = UIStoryboard(name: Constants.StoryBoard.welcome, bundle: nil)
+            let welcomeVC = welcomeStoryboard.instantiateViewController(withIdentifier: "WelcomeViewController") as! WelcomeViewController
+            welcomeVC.modalPresentationStyle = .fullScreen
+            self.present(welcomeVC, animated: true, completion: nil)
+        }
+
+        // ✅ Ajout de l’observateur une seule fois
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(showOpeningMessageIfNeeded),
+                                               name: .shouldShowOpeningMessage,
+                                               object: nil)
+>>>>>>> Stashed changes
     }
     
+
+    @objc private func showOpeningMessageIfNeeded() {
+        guard !didShowOpeningPopup else { return }
+        didShowOpeningPopup = true
+
+        RestApiManager.sharedInstance.getOpeningMessage { [weak self] messageBO, online in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                guard online, !messageBO.isEmpty else { return }
+
+                let parts = messageBO.components(separatedBy: ".")
+                let title = parts.count > 1 ? parts[0].trimmingCharacters(in: .whitespacesAndNewlines) : "Information"
+                let body = parts.count > 1
+                    ? messageBO.replacingOccurrences(of: parts[0] + ".", with: "").trimmingCharacters(in: .whitespacesAndNewlines)
+                    : messageBO.trimmingCharacters(in: .whitespacesAndNewlines)
+
+                let alert = UIAlertController(title: title, message: body, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Fermer", style: .default))
+                self.present(alert, animated: true)
+            }
+        }
+    }
+
 
     // MARK: - Other Methods
     func configureTabBarItems() {

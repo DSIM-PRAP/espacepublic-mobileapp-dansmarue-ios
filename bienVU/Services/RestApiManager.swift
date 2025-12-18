@@ -1094,21 +1094,30 @@ class RestApiManager: NSObject {
     ///
     /// - Parameters:
     ///   - onCompletion: True si status = 0, false sinon
-    func getOpeningMessage( onCompletion: @escaping (String) -> Void ) {
+   
+    func getOpeningMessage(onCompletion: @escaping (_ message: String, _ online: Bool) -> Void) {
         print("Appel du BO pour récupération du message d'ouverture")
-            
+        
         let route = Constants.Services.apiBaseUrl + "signalement/isDmrOnline"
         var messageBO = ""
-            
-        self.makeHTTPGetRequest(path: route, header: ["":""] , onCompletion: {json, err in
+        var online = false
+        
+        self.makeHTTPGetRequest(path: route, header: ["": ""], onCompletion: { json, err in
             if let jsonDict = json.dictionary {
                 if let message_information = jsonDict["message_information"]?.stringValue {
                     messageBO = message_information
+                    online = true
                 }
             }
-            onCompletion(messageBO)
+            
+            
+            DispatchQueue.main.async {
+                onCompletion(messageBO, online)
+            }
+
         })
     }
+
     
     /// Methode permettant de recuperer la liste des Types equipements et Equipement
     ///
