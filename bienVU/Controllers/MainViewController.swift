@@ -12,38 +12,6 @@ import SwiftyJSON
 
 class MainViewController: UITabBarController {
     
-<<<<<<< Updated upstream
-        override func viewDidLoad() {
-                super.viewDidLoad()
-
-                configureTabBarItems()
-
-                // Customisation de la barre de navigation
-                UINavigationBar.appearance().tintColor = .white
-                UINavigationBar.appearance().barTintColor = UIColor.pinkDmr()
-                UINavigationBar.appearance().titleTextAttributes = convertToOptionalNSAttributedStringKeyDictionary([
-                    NSAttributedString.Key.foregroundColor.rawValue: UIColor.white
-                ])
-                UITabBar.appearance().tintColor = UIColor.pinkButtonDmr()
-
-                // Chargement des données
-                getCategories()
-                getEquipements()
-                isLatestVersion()
-
-                // Authentification automatique
-                User.shared.automaticAuthentification()
-
-                // Notifications
-                NotificationCenter.default.addObserver(
-                    forName: Notification.Name(rawValue: Constants.NoticationKey.pushNotification),
-                    object: nil,
-                    queue: nil,
-                    using: displayProfil
-                )
-            }
-     
-=======
     private var didShowOpeningPopup = false
     
     //MARK: - View lifecycle
@@ -74,16 +42,11 @@ class MainViewController: UITabBarController {
         let nc = NotificationCenter.default
         nc.addObserver(forName:Notification.Name(rawValue: Constants.NoticationKey.pushNotification), object:nil, queue:nil, using:displayProfil)
     }
->>>>>>> Stashed changes
     
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
-<<<<<<< Updated upstream
-            
         //showOptinPopUp()
-=======
         let hasAlreadyBeenConnected = UserDefaults.standard.bool(forKey: Constants.Key.hasAlreadyBeenConnected)
         if !hasAlreadyBeenConnected {
             // Affiche Welcome
@@ -98,7 +61,6 @@ class MainViewController: UITabBarController {
                                                selector: #selector(showOpeningMessageIfNeeded),
                                                name: .shouldShowOpeningMessage,
                                                object: nil)
->>>>>>> Stashed changes
     }
     
 

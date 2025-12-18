@@ -32,17 +32,10 @@ class WelcomeViewController: UIViewController {
     //MARK: - IBActions
    
     @IBAction func beginApp(_ sender: UIButton) {
-<<<<<<< Updated upstream
-    
-        UserDefaults.standard.set(true, forKey: "hasAlreadyBeenConnected")
-        self.dismiss(animated: true, completion: nil)
-
-=======
         UserDefaults.standard.set(true, forKey: Constants.Key.hasAlreadyBeenConnected)
         self.dismiss(animated: true) {
             NotificationCenter.default.post(name: .shouldShowOpeningMessage, object: nil)
         }
->>>>>>> Stashed changes
     }
 
     
