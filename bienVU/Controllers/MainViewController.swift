@@ -12,20 +12,13 @@ import SwiftyJSON
 
 class MainViewController: UITabBarController {
     
+    private var didShowOpeningPopup = false
+    
     //MARK: - View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //Vérification accessibilité BO
-        RestApiManager.sharedInstance.isDMROnline { (isDMROnline) in
-            if !isDMROnline {
-                let alert = UIAlertController(title: Constants.AlertBoxTitle.information, message: Constants.AlertBoxMessage.maintenance, preferredStyle: UIAlertController.Style.alert)
-                let okBtn = UIAlertAction(title:"Ok" , style: .default, handler: {(_ action: UIAlertAction) -> Void in
-                })
-                alert.addAction(okBtn)
-                self.present(alert, animated: true, completion: nil)
-            }
-        }
+        
         
         configureTabBarItems()
         //Customisation de la bar de naviguation
@@ -50,24 +43,49 @@ class MainViewController: UITabBarController {
         nc.addObserver(forName:Notification.Name(rawValue: Constants.NoticationKey.pushNotification), object:nil, queue:nil, using:displayProfil)
     }
     
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        let hasAlreadyBeenConnected = UserDefaults.standard.bool(forKey: "hasAlreadyBeenConnected")
-        
-        if !hasAlreadyBeenConnected {
-            
-            //Redirect to walkthrough view
-            let welcomeStoryboard = UIStoryboard(name: Constants.StoryBoard.welcome, bundle: nil)
-            let welcomeViewController = welcomeStoryboard.instantiateViewController(withIdentifier: "WelcomeViewController") as! WelcomeViewController
-            welcomeViewController.modalPresentationStyle = .fullScreen
-            
-            self.navigationController?.addChild(welcomeViewController)
-            self.present(welcomeViewController, animated: true, completion: nil)
-            
-        }
         //showOptinPopUp()
+        let hasAlreadyBeenConnected = UserDefaults.standard.bool(forKey: Constants.Key.hasAlreadyBeenConnected)
+        if !hasAlreadyBeenConnected {
+            // Affiche Welcome
+            let welcomeStoryboard = UIStoryboard(name: Constants.StoryBoard.welcome, bundle: nil)
+            let welcomeVC = welcomeStoryboard.instantiateViewController(withIdentifier: "WelcomeViewController") as! WelcomeViewController
+            welcomeVC.modalPresentationStyle = .fullScreen
+            self.present(welcomeVC, animated: true, completion: nil)
+        }
+
+        // ✅ Ajout de l’observateur une seule fois
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(showOpeningMessageIfNeeded),
+                                               name: .shouldShowOpeningMessage,
+                                               object: nil)
     }
+    
+
+    @objc private func showOpeningMessageIfNeeded() {
+        guard !didShowOpeningPopup else { return }
+        didShowOpeningPopup = true
+
+        RestApiManager.sharedInstance.getOpeningMessage { [weak self] messageBO, online in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                guard online, !messageBO.isEmpty else { return }
+
+                let parts = messageBO.components(separatedBy: ".")
+                let title = parts.count > 1 ? parts[0].trimmingCharacters(in: .whitespacesAndNewlines) : "Information"
+                let body = parts.count > 1
+                    ? messageBO.replacingOccurrences(of: parts[0] + ".", with: "").trimmingCharacters(in: .whitespacesAndNewlines)
+                    : messageBO.trimmingCharacters(in: .whitespacesAndNewlines)
+
+                let alert = UIAlertController(title: title, message: body, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Fermer", style: .default))
+                self.present(alert, animated: true)
+            }
+        }
+    }
+
 
     // MARK: - Other Methods
     func configureTabBarItems() {

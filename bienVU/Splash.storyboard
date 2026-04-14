@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Splash View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="SplashViewController" customModule="bienVU" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" id="mn6-le-VGV">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" image="launchImage" translatesAutoresizingMaskIntoConstraints="NO" id="67O-8C-itJ">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" image="logo_dansMaRue" translatesAutoresizingMaskIntoConstraints="NO" id="qmd-1I-38l">
+                                <rect key="frame" x="80" y="304.33333333333331" width="234" height="243.33333333333331"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="qmd-1I-38l" secondAttribute="height" multiplier="247:257" id="1VT-xm-DMZ"/>
+                                    <constraint firstAttribute="width" secondItem="qmd-1I-38l" secondAttribute="height" multiplier="247:257" id="UWq-nq-B0Y"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="a4k-a8-FES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="67O-8C-itJ" secondAttribute="bottom" id="0rs-wk-0QL"/>
+                            <constraint firstItem="qmd-1I-38l" firstAttribute="centerY" secondItem="mn6-le-VGV" secondAttribute="centerY" id="4gg-5y-5Nb"/>
+                            <constraint firstItem="67O-8C-itJ" firstAttribute="leading" secondItem="mn6-le-VGV" secondAttribute="leading" id="I8t-6q-SP7"/>
+                            <constraint firstItem="qmd-1I-38l" firstAttribute="leading" secondItem="mn6-le-VGV" secondAttribute="leadingMargin" constant="64" id="O8v-Uo-6WG"/>
+                            <constraint firstAttribute="trailing" secondItem="67O-8C-itJ" secondAttribute="trailing" id="Rma-Td-Jnj"/>
+                            <constraint firstItem="67O-8C-itJ" firstAttribute="top" secondItem="mn6-le-VGV" secondAttribute="top" id="VB4-Um-8Ds"/>
+                            <constraint firstItem="67O-8C-itJ" firstAttribute="top" secondItem="mn6-le-VGV" secondAttribute="top" id="cag-hg-JjJ"/>
+                            <constraint firstItem="qmd-1I-38l" firstAttribute="centerX" secondItem="mn6-le-VGV" secondAttribute="centerX" id="d3R-EH-jlg"/>
+                            <constraint firstItem="67O-8C-itJ" firstAttribute="leading" secondItem="mn6-le-VGV" secondAttribute="leading" id="exy-aW-Hg0"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="qmd-1I-38l" secondAttribute="trailing" constant="63" id="z1w-XJ-RcR"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="139" y="131"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="launchImage" width="180.5" height="320.5"/>
+        <image name="logo_dansMaRue" width="171.5" height="186"/>
+    </resources>
+</document>

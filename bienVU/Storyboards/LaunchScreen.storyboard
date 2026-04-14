@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launchImage" translatesAutoresizingMaskIntoConstraints="NO" id="EI7-uX-hjm">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="828"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_dansMaRue" translatesAutoresizingMaskIntoConstraints="NO" id="bfI-RC-ly1">
                                 <rect key="frame" x="84" y="319.5" width="247" height="257"/>
@@ -32,7 +32,6 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="EI7-uX-hjm" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="FSM-je-tNn"/>
                             <constraint firstItem="EI7-uX-hjm" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="HnU-om-UOC"/>
                             <constraint firstItem="bfI-RC-ly1" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="64" id="I6i-vB-qkV"/>
                             <constraint firstItem="bfI-RC-ly1" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="IdF-8q-YVS"/>
@@ -40,9 +39,10 @@
                             <constraint firstItem="EI7-uX-hjm" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Mam-or-Lhc"/>
                             <constraint firstItem="EI7-uX-hjm" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="O43-nY-QzE"/>
                             <constraint firstItem="bfI-RC-ly1" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="SBw-mD-ZCB"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="EI7-uX-hjm" secondAttribute="bottom" id="TqQ-Jg-FPq"/>
+                            <constraint firstItem="EI7-uX-hjm" firstAttribute="bottom" secondItem="xb3-aO-Qok" secondAttribute="top" id="bS9-BL-ba6"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bfI-RC-ly1" secondAttribute="trailing" constant="63" id="ibv-0y-zmO"/>
                             <constraint firstAttribute="trailing" secondItem="EI7-uX-hjm" secondAttribute="trailing" id="uEZ-Sy-1aC"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="EI7-uX-hjm" secondAttribute="bottom" id="uQb-Jm-1n1"/>
                         </constraints>
                     </view>
                 </viewController>

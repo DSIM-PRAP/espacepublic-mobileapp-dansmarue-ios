@@ -12,7 +12,7 @@ func env<T>(dev development: T, stg staging: T, prod production:T) -> T {
     var v: T!
     
     #if ENVIRONMENT_DEBUG
-        v = development
+        v = development 
     #elseif ENVIRONMENT_STAGING
         v = staging
     #else // Live
@@ -33,10 +33,10 @@ struct Constants {
         static let langPays = "FR/fr"
         static let emailServiceFait = ["@paris.fr", "@derichebourg.com"]
         
-        static let apiBaseUrl = env(dev: "",
-                                            stg: "",
-                                            prod: "")
-        static let apiUrl = ""
+        static let apiBaseUrl = env(dev: "http://r59-tom01-dev.dev.acn:8080/bienvu/rest/",
+                                            stg: "https://bienvu-test.plainecommune.fr/bienVU-build/rest/",
+                                            prod: "https://bienvu.plainecommune.fr/bienVU/rest/")
+        static let apiUrl = "signalement/api"
 
         static let apiBaseUrlEquipement = env(dev: "",
                                     stg: "",
@@ -51,9 +51,9 @@ struct Constants {
             stg: "",
             prod: "")
         
-        static let apiKeyGMS = env(dev: "",
-                                   stg: "",
-                                   prod: "")
+        static let apiKeyGMS = env(dev: "AIzaSyBJVwMdAiCn3H8hvKbp6bAeoHkQgC1Cpf8",
+                                   stg: "AIzaSyBJVwMdAiCn3H8hvKbp6bAeoHkQgC1Cpf8",
+                                   prod: "AIzaSyBJVwMdAiCn3H8hvKbp6bAeoHkQgC1Cpf8")
         
         static let urlForgetPassword = ""
         static let urlRegiserCompteParisien = ""

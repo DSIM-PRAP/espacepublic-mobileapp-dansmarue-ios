@@ -10,6 +10,8 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
     
+    var shouldShowMaintenanceAlert : Bool = false
+    
     //MARK: - IBOutlets
     @IBOutlet var sliderView: UIView!
     @IBOutlet var startButton: UIButton!
@@ -28,9 +30,18 @@ class WelcomeViewController: UIViewController {
     }
     
     //MARK: - IBActions
+   
     @IBAction func beginApp(_ sender: UIButton) {
         UserDefaults.standard.set(true, forKey: Constants.Key.hasAlreadyBeenConnected)
-        self.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true) {
+            NotificationCenter.default.post(name: .shouldShowOpeningMessage, object: nil)
+        }
     }
+
     
 }
+
+extension Notification.Name {
+    static let shouldShowOpeningMessage = Notification.Name("shouldShowOpeningMessage")
+}
+
