@@ -284,7 +284,7 @@ class MapViewController: UIViewController {
 
     // MARK: - Other Methods
     private func loadMapContainer() {
-        mapContainerView.mapType = GMSMapViewType.hybrid
+        mapContainerView.mapType = GMSMapViewType.normal
         
         // Permet de décaler les donnees Google (Logo, icone, ...)
         let mapInsets = UIEdgeInsets.init(top: 0.0, left: 0.0, bottom: 30.0, right: 0.0)
