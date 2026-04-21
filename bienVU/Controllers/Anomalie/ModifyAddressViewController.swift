@@ -71,6 +71,11 @@ class ModifyAddressViewController: UIViewController {
                 searchController?.hidesNavigationBarDuringPresentation = false
             }
             
+            if #available(iOS 26.0, *) {
+                configureSearchBarWhiteField(searchBar)
+                
+            }
+            
             view.addSubview(searchBar)
         }
         
@@ -166,6 +171,41 @@ extension ModifyAddressViewController: GMSAutocompleteResultsViewControllerDeleg
     func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
+    
+    func configureSearchBarWhiteField(_ searchBar: UISearchBar)
+    {
+            let tf = searchBar.searchTextField
+            tf.adjustsFontForContentSizeCategory = true
+            // Lisibilité : texte et curseur foncés sur fond blanc
+            tf.textColor = .black
+            tf.tintColor  = .black
+            tf.attributedPlaceholder = NSAttributedString(
+                string: Constants.PlaceHolder.saisirAdresse,
+                attributes: [
+                    .foregroundColor: UIColor.darkGray,
+                    .font: UIFont.preferredFont(forTextStyle: .caption2)
+                ])
+
+            tf.borderStyle = .none
+            tf.layer.cornerRadius = 0
+            tf.layer.masksToBounds = false
+
+            let corner: CGFloat = 10
+            let height: CGFloat = 36
+            let size   = CGSize(width: corner * 2 + 2, height: height)
+            let img = UIGraphicsImageRenderer(size: size).image { ctx in
+                let rect = CGRect(origin: .zero, size: size)
+                UIColor.white.setFill()
+                UIBezierPath(roundedRect: rect, cornerRadius: corner).fill()
+            }
+            let insets = UIEdgeInsets(top: corner, left: corner, bottom: corner, right: corner)
+            let whiteRounded = img.resizableImage(withCapInsets: insets, resizingMode: .stretch)
+
+            searchBar.setSearchFieldBackgroundImage(whiteRounded, for: .normal)
+            searchBar.setSearchFieldBackgroundImage(whiteRounded, for: .disabled)
+            tf.backgroundColor = .clear
+            searchBar.searchBarStyle = .prominent
+        }
 }
 
 

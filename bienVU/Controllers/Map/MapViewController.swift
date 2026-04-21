@@ -36,6 +36,8 @@ class MapViewController: UIViewController {
     // MARK: IBOutlet
     @IBOutlet weak var mapContainerView: GMSMapView!
     @IBOutlet weak var uberActionLabel: UILabel!
+    
+    var favoriteItem: UIBarButtonItem?
 
     
     //MARK: - View lifecycle
@@ -65,7 +67,7 @@ class MapViewController: UIViewController {
         }
 
         placesClient = GMSPlacesClient()
-        initializeSearchBar()
+        //initializeSearchBar()
         initializeCustomSearchBar()
         
         uberActionLabel.isHidden = true
@@ -82,6 +84,7 @@ class MapViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        initializeSearchBar()
         if #available(iOS 15, *) {
             let appearance = UINavigationBarAppearance()
             appearance.configureWithOpaqueBackground()
@@ -97,6 +100,7 @@ class MapViewController: UIViewController {
             navigationController?.navigationBar.barTintColor = UIColor.white
         }
         addBottomSheetView()
+        installFavoriteItem()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -116,6 +120,15 @@ class MapViewController: UIViewController {
         uberActionLabel.layer.cornerRadius = 10
         
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+            super.viewWillDisappear(animated)
+            removeFavoriteItem()
+        }
+        override func viewDidDisappear(_ animated: Bool) {
+            super.viewDidDisappear(animated)
+            removeFavoriteItem()
+        }
     
     
     //MARK: - View navigation
@@ -171,6 +184,10 @@ class MapViewController: UIViewController {
                 self.navigationController?.navigationBar.scrollEdgeAppearance = self.navigationController?.navigationBar.standardAppearance
             }
             
+            if #available(iOS 26.0, *) {
+                configureSearchBarWhiteField(searchBar)
+            }
+            
             searchBar.layer.cornerRadius = 10
             setNavigationTitleView(withSearchBarController: searchController!)
         }
@@ -190,6 +207,42 @@ class MapViewController: UIViewController {
         // Active sur le filtre sur Paris uniquement
         MapsUtils.filterToParis(resultsViewController: self.resultsViewController!)
     }
+    
+    func configureSearchBarWhiteField(_ searchBar: UISearchBar)
+    {
+            let tf = searchBar.searchTextField
+            tf.adjustsFontForContentSizeCategory = true
+            // Lisibilité : texte et curseur foncés sur fond blanc
+            tf.textColor = .black
+            tf.tintColor  = .black
+            tf.attributedPlaceholder = NSAttributedString(
+                string: Constants.PlaceHolder.saisirAdresse,
+                attributes: [
+                    .foregroundColor: UIColor.darkGray,
+                    .font: UIFont.preferredFont(forTextStyle: .caption2)
+                ])
+
+            tf.borderStyle = .none
+            tf.layer.cornerRadius = 0
+            tf.layer.masksToBounds = false
+
+            let corner: CGFloat = 10
+            let height: CGFloat = 36
+            let size   = CGSize(width: corner * 2 + 2, height: height)
+            let img = UIGraphicsImageRenderer(size: size).image { ctx in
+                let rect = CGRect(origin: .zero, size: size)
+                UIColor.white.setFill()
+                UIBezierPath(roundedRect: rect, cornerRadius: corner).fill()
+            }
+            let insets = UIEdgeInsets(top: corner, left: corner, bottom: corner, right: corner)
+            let whiteRounded = img.resizableImage(withCapInsets: insets, resizingMode: .stretch)
+
+            searchBar.setSearchFieldBackgroundImage(whiteRounded, for: .normal)
+            searchBar.setSearchFieldBackgroundImage(whiteRounded, for: .disabled)
+
+            tf.backgroundColor = .clear
+            searchBar.searchBarStyle = .prominent
+        }
     
     /// Méthode permettant d'initialiser la barre de recherche des équipements pour l'indoor.
     ///
@@ -211,6 +264,17 @@ class MapViewController: UIViewController {
         customSearchController?.searchResultsUpdater = equipementSearchController
     }
     
+    func removeFavoriteItem()
+    {
+        // Retire l’item de la barre s’il est installé par cet écran
+        if navigationItem.rightBarButtonItem === favoriteItem
+        {
+            navigationItem.rightBarButtonItem = nil
+        }
+        favoriteItem = nil
+     
+    }
+    
     /// Permet de positionner la SearchBar spécifié sur la barre de navigation
     ///
     func setNavigationTitleView(withSearchBarController searchBarController: UISearchController) {
@@ -224,21 +288,33 @@ class MapViewController: UIViewController {
         navigationItem.titleView?.accessibilityLabel = Constants.TabBarTitle.carte
         navigationItem.titleView?.accessibilityTraits = .header
         navigationItem.titleView?.isAccessibilityElement = true
+        
 
-        let menuBtn = UIButton(type: .custom)
-        menuBtn.frame = CGRect(x: 0.0, y: 0.0, width: 44, height: 44)
-        menuBtn.setImage(UIImage(named: Constants.Image.favorite), for: .normal)
-        menuBtn.addTarget(self, action: #selector(addTapped), for: .touchDown)
-        menuBtn.accessibilityTraits = .button
-        menuBtn.accessibilityLabel = Constants.AccessibilityLabel.favoriteAdressButton
-        let menuBarItem = UIBarButtonItem(customView: menuBtn)
-        
-        let currWidth = menuBarItem.customView?.widthAnchor.constraint(equalToConstant: 25)
-        currWidth?.isActive = true
-        let currHeight = menuBarItem.customView?.heightAnchor.constraint(equalToConstant: 25)
-        currHeight?.isActive = true
-        
-        navigationItem.rightBarButtonItem = menuBarItem
+    }
+    
+    func installFavoriteItem()
+        {
+            let favorite = UIImage(named: Constants.Image.favorite)
+            let small = favorite?.resized(to: CGSize(width: 22, height: 22)).withRenderingMode(.alwaysOriginal)
+            var cfg = UIButton.Configuration.plain()
+            cfg.contentInsets = .zero
+            cfg.image = small
+            let button = UIButton(configuration: cfg)
+            button.accessibilityLabel = Constants.AccessibilityLabel.favoriteAdressButton
+            button.accessibilityTraits = .button
+            button.addTarget(self, action: #selector(addTapped), for: .touchUpInside)
+            button.tintColor = .label  // se fond dans la barre (clair/sombre)
+            NSLayoutConstraint.activate([
+                button.widthAnchor.constraint(equalToConstant: 44),
+                button.heightAnchor.constraint(equalToConstant: 44)
+            ])
+            let item = UIBarButtonItem(customView: button)
+            if #available(iOS 26.0, *)
+            {
+                item.hidesSharedBackground = true
+            }
+            navigationItem.rightBarButtonItem = item
+            favoriteItem = item
     }
     
     @objc func addTapped() {
@@ -810,6 +886,31 @@ extension MapViewController: GMSAutocompleteResultsViewControllerDelegate {
     }
     
     
+}
+
+extension UIImage {
+    /// Redimensionne l'image à une taille cible en points (préserve l'échelle Retina).
+    func resized(to size: CGSize) -> UIImage
+    {
+        // Conserve la densité de pixels de l'image originale (scale @2x / @3x)
+        let format = UIGraphicsImageRendererFormat.default()
+        format.scale = self.scale
+            
+        let renderer = UIGraphicsImageRenderer(size: size, format: format)
+        return renderer.image { _ in
+            self.draw(in: CGRect(origin: .zero, size: size))
+        }
+    }
+
+    /// Redimensionne en respectant le ratio d'aspect, en s'inscrivant dans `maxSize`.
+    func resizedAspectFit(in maxSize: CGSize) -> UIImage
+    {
+        let aspectWidth  = maxSize.width / size.width
+        let aspectHeight = maxSize.height / size.height
+        let factor = min(aspectWidth, aspectHeight)
+        let newSize = CGSize(width: size.width * factor, height: size.height * factor)
+        return resized(to: newSize)
+    }
 }
 
 extension MapViewController: EquipementDelegate {

@@ -17,6 +17,7 @@ class TypeAnomalieViewController: UIViewController {
     weak var delegate: AddAnomalyViewController!
     var searching: Bool? = false
     var typesSearch = [TypeAnomalie]()
+    var favoriteItem: UIBarButtonItem?
     
     //MARK: IBOutlet
     @IBOutlet weak var tableView: UITableView!
@@ -43,15 +44,48 @@ class TypeAnomalieViewController: UIViewController {
         titleFloatingLabel.isHidden = true
         navigationItem.title = Constants.AccessibilityLabel.typeTitle
         navigationItem.isAccessibilityElement = true
-        navigationItem.titleView?.isAccessibilityElement = true
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: self, action: #selector(backAction))
-        navigationItem.leftBarButtonItem?.accessibilityTraits = .button
-        navigationItem.leftBarButtonItem?.accessibilityLabel = Constants.AccessibilityLabel.backButton
-        if let image = UIImage(named: Constants.Image.iconBack) {
-            navigationItem.leftBarButtonItem?.image = image
-        }
-
+       
+    
+        installFavoriteItem()
         loadRootTypes()
+    }
+    
+    func installFavoriteItem()
+    {
+        let favorite = UIImage(named: Constants.Image.favorite)
+        let small = favorite?.resized(to: CGSize(width: 22, height: 22)).withRenderingMode(.alwaysOriginal)
+        var cfg = UIButton.Configuration.plain()
+        
+        cfg.contentInsets = .zero
+        cfg.image = small
+        
+        let button = UIButton(configuration: cfg)
+        button.accessibilityLabel = Constants.AccessibilityLabel.favoriteTypesButton
+        button.accessibilityTraits = .button
+        button.addTarget(self, action: #selector(openFavorites), for: .touchUpInside)
+        button.tintColor = .label  // se fond dans la barre (clair/sombre)
+        NSLayoutConstraint.activate([
+        button.widthAnchor.constraint(equalToConstant: 44),
+        button.heightAnchor.constraint(equalToConstant: 44)
+        ])
+        
+        let item = UIBarButtonItem(customView: button)
+        if #available(iOS 26.0, *)
+        {
+            item.hidesSharedBackground = true
+        }
+        navigationItem.rightBarButtonItem = item
+        favoriteItem = item
+    }
+    
+    func removeFavoriteItem()
+    {
+            
+        // Retire l’item de la barre s’il est installé par cet écran
+        if navigationItem.rightBarButtonItem === favoriteItem {
+            navigationItem.rightBarButtonItem = nil
+        }
+        favoriteItem = nil
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -66,7 +100,13 @@ class TypeAnomalieViewController: UIViewController {
         searchTextField.accessibilityTraits = .searchField
         searchTextField.accessibilityHint = Constants.AccessibilityHint.searchBarTypeHint
         searchTextField.clearButtonMode = .whileEditing
+        installFavoriteItem()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+            super.viewWillDisappear(animated)
+            removeFavoriteItem()
+        }
     
     @IBAction func openFavorites(_ sender: Any) {
         let typeVC = UIStoryboard(name: Constants.StoryBoard.manageFavorites, bundle: nil).instantiateInitialViewController() as! ManageFavoritesViewController
