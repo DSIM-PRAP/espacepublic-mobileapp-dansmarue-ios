@@ -34,7 +34,7 @@ struct Constants {
         static let emailServiceFait = ["@paris.fr", "@derichebourg.com"]
         
         static let apiBaseUrl = env(dev: "http://r59-tom01-dev.dev.acn:8080/bienvu/rest/",
-                                            stg: "https://bienvu-test.plainecommune.fr/bienVU-build/rest/",
+                                            stg: "https://bienvu-test-tempv7.plainecommune.fr/bienVU/rest/",
                                             prod: "https://bienvu.plainecommune.fr/bienVU/rest/")
         static let apiUrl = "signalement/api"
 
