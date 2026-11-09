@@ -95,6 +95,15 @@
             ReferencedContainer = "container:DansMaRue.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "CD052AA41E7AED1E00571E6C"
+            BuildableName = "DansMaRue.app"
+            BlueprintName = "DansMaRue"
+            ReferencedContainer = "container:DansMaRue.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

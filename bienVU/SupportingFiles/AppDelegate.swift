@@ -9,8 +9,7 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
-import Fabric
-import Crashlytics
+import FirebaseCrashlytics
 import UserNotifications
 import Firebase
 //import TTGSnackbar
@@ -34,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         // Override point for customization after application launch.
         UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent
-        Fabric.with([Crashlytics.self])
+
         
         /*adtagInitializer = AdtagInitializer.shared
         adtagInitializer?.configPlatform(Platform.prod).configUser(login: "dansmarue", password: "QVLPbx7F5oM8cFpib3mE", company: "arvilledeparis").synchronize()
