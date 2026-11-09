@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		086721F6AE617128AEA855E6 /* Pods_bienVU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47FC77C21CD21ABA630F09DB /* Pods_bienVU.framework */; };
 		2814F5CE1EC1FFAE00156DFE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2814F5CD1EC1FFAE00156DFE /* User.swift */; };
 		2814F5D21EC9CC8E00156DFE /* ProfileDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2814F5D11EC9CC8E00156DFE /* ProfileDetailViewController.swift */; };
 		2830EFF62034697A008E6B18 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2830EFF52034697A008E6B18 /* BottomSheetView.swift */; };
@@ -50,6 +49,7 @@
 		28FE2C7D1FA8B57200C86D4D /* getEquipementsOne.json in Resources */ = {isa = PBXBuildFile; fileRef = 28FE2C7C1FA8B57200C86D4D /* getEquipementsOne.json */; };
 		4822FD7C2050184200184932 /* MyNotificationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4822FD7B2050184200184932 /* MyNotificationDelegate.swift */; };
 		48BA5DF7203DC26C004F9490 /* VersionsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48BA5DF6203DC26B004F9490 /* VersionsUtils.swift */; };
+		575B93E01E5FB0E4DBA4850E /* Pods_bienVU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7240B16FB08E09346F7E4667 /* Pods_bienVU.framework */; };
 		760137FD2EDDE7510088642B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760137FC2EDDE7510088642B /* Constants.swift */; };
 		7627E2FC2ECF737400C7D532 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7627E2FB2ECF737400C7D532 /* GoogleService-Info.plist */; };
 		7645B45B2E96C08E00B70896 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7645B45A2E96C08E00B70896 /* GoogleService-Info.plist */; };
@@ -63,7 +63,7 @@
 		919023BF2343846900A0E8E2 /* MessageTypeAnoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 919023BE2343846900A0E8E2 /* MessageTypeAnoViewController.swift */; };
 		919C629E21ECBE9800FC9C61 /* logo vert 16112018.png in Resources */ = {isa = PBXBuildFile; fileRef = 919C629D21ECBE9800FC9C61 /* logo vert 16112018.png */; };
 		919C62A021ECBEBA00FC9C61 /* ramen_mobile.png in Resources */ = {isa = PBXBuildFile; fileRef = 919C629F21ECBEBA00FC9C61 /* ramen_mobile.png */; };
-		A75E2696A4AB0FBF6316C71A /* Pods_bienVUTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F9319C43FA6A39D3955E32 /* Pods_bienVUTests.framework */; };
+		BC2517AEB1DC0DBA45E9F6C7 /* Pods_bienVUTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 086F513EE4014F3F804EFB0F /* Pods_bienVUTests.framework */; };
 		CD0508BB1E8124E90013334A /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0508BA1E8124E90013334A /* UIDevice.swift */; };
 		CD0508BD1E826F030013334A /* AddAnomaly.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD0508BC1E826F030013334A /* AddAnomaly.storyboard */; };
 		CD052AB01E7AED1F00571E6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD052AAF1E7AED1F00571E6C /* Assets.xcassets */; };
@@ -111,7 +111,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2037A02581B1064819117A10 /* Pods-bienVU.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bienVU.release.xcconfig"; path = "Target Support Files/Pods-bienVU/Pods-bienVU.release.xcconfig"; sourceTree = "<group>"; };
+		086F513EE4014F3F804EFB0F /* Pods_bienVUTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bienVUTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0FB9E660E70E725FCACEAF52 /* Pods-bienVU.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bienVU.debug.xcconfig"; path = "Target Support Files/Pods-bienVU/Pods-bienVU.debug.xcconfig"; sourceTree = "<group>"; };
 		2814F5CD1EC1FFAE00156DFE /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = Model/User.swift; sourceTree = "<group>"; };
 		2814F5D11EC9CC8E00156DFE /* ProfileDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileDetailViewController.swift; path = Controllers/Profile/ProfileDetailViewController.swift; sourceTree = "<group>"; };
 		2830EFF52034697A008E6B18 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = BottomSheetView.swift; path = Controllers/Map/BottomSheetView.swift; sourceTree = "<group>"; };
@@ -154,16 +155,15 @@
 		28FE2C781FA73CD700C86D4D /* TypeContribution.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = TypeContribution.storyboard; path = Storyboards/TypeContribution.storyboard; sourceTree = "<group>"; };
 		28FE2C7A1FA73DB900C86D4D /* TypeContributionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TypeContributionViewController.swift; path = Controllers/Map/TypeContributionViewController.swift; sourceTree = "<group>"; };
 		28FE2C7C1FA8B57200C86D4D /* getEquipementsOne.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = getEquipementsOne.json; path = Services/getEquipementsOne.json; sourceTree = "<group>"; };
-		2DE0413E61D284AE701B541A /* Pods-bienVUTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bienVUTests.debug.xcconfig"; path = "Target Support Files/Pods-bienVUTests/Pods-bienVUTests.debug.xcconfig"; sourceTree = "<group>"; };
-		40F9319C43FA6A39D3955E32 /* Pods_bienVUTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bienVUTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		47FC77C21CD21ABA630F09DB /* Pods_bienVU.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bienVU.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4822FD7B2050184200184932 /* MyNotificationDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyNotificationDelegate.swift; sourceTree = "<group>"; };
+		48AFC966970427A5797F6DDF /* Pods-bienVU.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bienVU.release.xcconfig"; path = "Target Support Files/Pods-bienVU/Pods-bienVU.release.xcconfig"; sourceTree = "<group>"; };
 		48BA5DF6203DC26B004F9490 /* VersionsUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VersionsUtils.swift; path = Utils/VersionsUtils.swift; sourceTree = "<group>"; };
+		7130421A5E78144614C39951 /* Pods-bienVU.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bienVU.staging.xcconfig"; path = "Target Support Files/Pods-bienVU/Pods-bienVU.staging.xcconfig"; sourceTree = "<group>"; };
+		7240B16FB08E09346F7E4667 /* Pods_bienVU.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_bienVU.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		760137FC2EDDE7510088642B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7627E2FB2ECF737400C7D532 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7645B45A2E96C08E00B70896 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		76EB8CE32ED06A96003A0ED1 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
-		8B09338BD42D3085073D209F /* Pods-bienVUTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bienVUTests.staging.xcconfig"; path = "Target Support Files/Pods-bienVUTests/Pods-bienVUTests.staging.xcconfig"; sourceTree = "<group>"; };
 		910172CE2302F12A00892887 /* ManageFavorites.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ManageFavorites.storyboard; sourceTree = "<group>"; };
 		910172D02302F26300892887 /* ManageFavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageFavoritesViewController.swift; sourceTree = "<group>"; };
 		910172D223030FBE00892887 /* TypeFavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeFavoritesTableViewCell.swift; sourceTree = "<group>"; };
@@ -173,8 +173,8 @@
 		919023BE2343846900A0E8E2 /* MessageTypeAnoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTypeAnoViewController.swift; sourceTree = "<group>"; };
 		919C629D21ECBE9800FC9C61 /* logo vert 16112018.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo vert 16112018.png"; sourceTree = "<group>"; };
 		919C629F21ECBEBA00FC9C61 /* ramen_mobile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ramen_mobile.png; sourceTree = "<group>"; };
-		9C9C106FD0660E291E42750F /* Pods-bienVU.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bienVU.staging.xcconfig"; path = "Target Support Files/Pods-bienVU/Pods-bienVU.staging.xcconfig"; sourceTree = "<group>"; };
-		C5A5D813E1270E4D69A32A25 /* Pods-bienVU.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bienVU.debug.xcconfig"; path = "Target Support Files/Pods-bienVU/Pods-bienVU.debug.xcconfig"; sourceTree = "<group>"; };
+		9272A652BE8C6D3777817880 /* Pods-bienVUTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bienVUTests.release.xcconfig"; path = "Target Support Files/Pods-bienVUTests/Pods-bienVUTests.release.xcconfig"; sourceTree = "<group>"; };
+		C4D774249FDC7B6C264C9F02 /* Pods-bienVUTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bienVUTests.debug.xcconfig"; path = "Target Support Files/Pods-bienVUTests/Pods-bienVUTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CD0508BA1E8124E90013334A /* UIDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIDevice.swift; path = Extensions/UIDevice.swift; sourceTree = "<group>"; };
 		CD0508BC1E826F030013334A /* AddAnomaly.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AddAnomaly.storyboard; path = Storyboards/Anomalie/AddAnomaly.storyboard; sourceTree = "<group>"; };
 		CD052AA51E7AED1F00571E6C /* bienVU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bienVU.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -199,7 +199,6 @@
 		CDC60C681EA655CC000E80A5 /* CompteParisien.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CompteParisien.storyboard; path = Storyboards/CompteParisien.storyboard; sourceTree = "<group>"; };
 		CDC60C6A1EA65619000E80A5 /* CompteParisienViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CompteParisienViewController.swift; path = Controllers/Profile/CompteParisienViewController.swift; sourceTree = "<group>"; };
 		CDC60C6C1EA66B83000E80A5 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = Storyboards/Main.storyboard; sourceTree = "<group>"; };
-		E191A5E11A4A9B790FFCD96B /* Pods-bienVUTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bienVUTests.release.xcconfig"; path = "Target Support Files/Pods-bienVUTests/Pods-bienVUTests.release.xcconfig"; sourceTree = "<group>"; };
 		E7A62A501EA8E22C0023A4D3 /* AnomalyDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = AnomalyDetail.storyboard; path = Storyboards/Anomalie/AnomalyDetail.storyboard; sourceTree = "<group>"; };
 		E7A62A521EA8E24D0023A4D3 /* AnomalyDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnomalyDetailViewController.swift; path = Controllers/Anomalie/AnomalyDetailViewController.swift; sourceTree = "<group>"; };
 		E7A62A541EB36D0B0023A4D3 /* ProfileCGUViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileCGUViewController.swift; path = Controllers/Profile/ProfileCGUViewController.swift; sourceTree = "<group>"; };
@@ -214,6 +213,7 @@
 		E7E5AAC11EA0F0E500BD2608 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Controllers/Profile/ProfileViewController.swift; sourceTree = "<group>"; };
 		E7E5AAC31EA0FB2100BD2608 /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileSettingsViewController.swift; path = Controllers/Profile/ProfileSettingsViewController.swift; sourceTree = "<group>"; };
 		E7E5AAC51EA0FDDC00BD2608 /* ProfilePreferencesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfilePreferencesViewController.swift; path = Controllers/Profile/ProfilePreferencesViewController.swift; sourceTree = "<group>"; };
+		FC7D1416319037A86FC683E7 /* Pods-bienVUTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-bienVUTests.staging.xcconfig"; path = "Target Support Files/Pods-bienVUTests/Pods-bienVUTests.staging.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,7 +221,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				086721F6AE617128AEA855E6 /* Pods_bienVU.framework in Frameworks */,
+				575B93E01E5FB0E4DBA4850E /* Pods_bienVU.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -229,7 +229,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A75E2696A4AB0FBF6316C71A /* Pods_bienVUTests.framework in Frameworks */,
+				BC2517AEB1DC0DBA45E9F6C7 /* Pods_bienVUTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,15 +343,6 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
-		3B4EE2BCFB0DC43426B07226 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				47FC77C21CD21ABA630F09DB /* Pods_bienVU.framework */,
-				40F9319C43FA6A39D3955E32 /* Pods_bienVUTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		919C629821ECBDF500FC9C61 /* img */ = {
 			isa = PBXGroup;
 			children = (
@@ -381,7 +372,7 @@
 				CD052AA61E7AED1F00571E6C /* Products */,
 				28535CC31FD5B9E300D17E99 /* Recovered References */,
 				E2D9B4853C0CC57D83C80953 /* Pods */,
-				3B4EE2BCFB0DC43426B07226 /* Frameworks */,
+				D4E336AD260ADEE82C3BE600 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 			usesTabs = 0;
@@ -463,15 +454,24 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		D4E336AD260ADEE82C3BE600 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7240B16FB08E09346F7E4667 /* Pods_bienVU.framework */,
+				086F513EE4014F3F804EFB0F /* Pods_bienVUTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E2D9B4853C0CC57D83C80953 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C5A5D813E1270E4D69A32A25 /* Pods-bienVU.debug.xcconfig */,
-				9C9C106FD0660E291E42750F /* Pods-bienVU.staging.xcconfig */,
-				2037A02581B1064819117A10 /* Pods-bienVU.release.xcconfig */,
-				2DE0413E61D284AE701B541A /* Pods-bienVUTests.debug.xcconfig */,
-				8B09338BD42D3085073D209F /* Pods-bienVUTests.staging.xcconfig */,
-				E191A5E11A4A9B790FFCD96B /* Pods-bienVUTests.release.xcconfig */,
+				0FB9E660E70E725FCACEAF52 /* Pods-bienVU.debug.xcconfig */,
+				7130421A5E78144614C39951 /* Pods-bienVU.staging.xcconfig */,
+				48AFC966970427A5797F6DDF /* Pods-bienVU.release.xcconfig */,
+				C4D774249FDC7B6C264C9F02 /* Pods-bienVUTests.debug.xcconfig */,
+				FC7D1416319037A86FC683E7 /* Pods-bienVUTests.staging.xcconfig */,
+				9272A652BE8C6D3777817880 /* Pods-bienVUTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -521,13 +521,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD052AC21E7AED1F00571E6C /* Build configuration list for PBXNativeTarget "bienVU" */;
 			buildPhases = (
-				D53770C80097DE1D6BEEE801 /* [CP] Check Pods Manifest.lock */,
+				2708D4775651C75297BB049C /* [CP] Check Pods Manifest.lock */,
 				CD052AA11E7AED1E00571E6C /* Sources */,
 				CD052AA21E7AED1E00571E6C /* Frameworks */,
 				CD052AA31E7AED1E00571E6C /* Resources */,
 				916197EE26D4F2E100931BFB /* Run Script */,
-				A2B81C356A49B5167E22BF2F /* [CP] Embed Pods Frameworks */,
-				AAE8DCE6F26FF944D742B90E /* [CP] Copy Pods Resources */,
+				F4F4D29AC224273080F380A4 /* [CP] Embed Pods Frameworks */,
+				895E1BEA4B9B08BEAA758B82 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -542,7 +542,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CD052AC51E7AED1F00571E6C /* Build configuration list for PBXNativeTarget "bienVUTests" */;
 			buildPhases = (
-				25CFF828F0B1A8A4D02C4374 /* [CP] Check Pods Manifest.lock */,
+				AE1980377BF20477B751F5B3 /* [CP] Check Pods Manifest.lock */,
 				CD052AB51E7AED1F00571E6C /* Sources */,
 				CD052AB61E7AED1F00571E6C /* Frameworks */,
 				CD052AB71E7AED1F00571E6C /* Resources */,
@@ -656,7 +656,71 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		25CFF828F0B1A8A4D02C4374 /* [CP] Check Pods Manifest.lock */ = {
+		2708D4775651C75297BB049C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-bienVU-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		895E1BEA4B9B08BEAA758B82 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-bienVU/Pods-bienVU-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-bienVU/Pods-bienVU-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		916197EE26D4F2E100931BFB /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AE1980377BF20477B751F5B3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -678,29 +742,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		916197EE26D4F2E100931BFB /* Run Script */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 12;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
-				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
-			);
-			name = "Run Script";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellScript = "
-";
-			showEnvVarsInLog = 0;
-		};
-		A2B81C356A49B5167E22BF2F /* [CP] Embed Pods Frameworks */ = {
+		F4F4D29AC224273080F380A4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -708,10 +750,15 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-bienVU/Pods-bienVU-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseCoreExtension/FirebaseCoreExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseCoreInternal/FirebaseCoreInternal.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseCrashlytics/FirebaseCrashlytics.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseInstallations/FirebaseInstallations.framework",
+				"${BUILT_PRODUCTS_DIR}/FirebaseSessions/FirebaseSessions.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework",
+				"${BUILT_PRODUCTS_DIR}/PromisesSwift/Promises.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/TTGSnackbar/TTGSnackbar.framework",
@@ -720,10 +767,15 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCoreInternal.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCrashlytics.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseInstallations.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseSessions.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleDataTransport.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBLPromises.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Promises.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TTGSnackbar.framework",
@@ -732,48 +784,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-bienVU/Pods-bienVU-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AAE8DCE6F26FF944D742B90E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-bienVU/Pods-bienVU-resources.sh",
-				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
-				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-bienVU/Pods-bienVU-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D53770C80097DE1D6BEEE801 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-bienVU-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -912,7 +922,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -923,7 +933,7 @@
 		};
 		288C596F1EB8908400A9EC5B /* Staging */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9C9C106FD0660E291E42750F /* Pods-bienVU.staging.xcconfig */;
+			baseConfigurationReference = 7130421A5E78144614C39951 /* Pods-bienVU.staging.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_ENTITLEMENTS = bienVU/DansMaRue.entitlements;
@@ -933,7 +943,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W9PH4PG2T9;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = W9PH4PG2T9;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = "$(SRCROOT)/bienVU/SupportingFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 16;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -954,7 +963,7 @@
 		};
 		288C59701EB8908400A9EC5B /* Staging */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8B09338BD42D3085073D209F /* Pods-bienVUTests.staging.xcconfig */;
+			baseConfigurationReference = FC7D1416319037A86FC683E7 /* Pods-bienVUTests.staging.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1022,7 +1031,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1075,7 +1084,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -1086,7 +1095,7 @@
 		};
 		CD052AC31E7AED1F00571E6C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C5A5D813E1270E4D69A32A25 /* Pods-bienVU.debug.xcconfig */;
+			baseConfigurationReference = 0FB9E660E70E725FCACEAF52 /* Pods-bienVU.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_ENTITLEMENTS = bienVU/DansMaRue.entitlements;
@@ -1096,7 +1105,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W9PH4PG2T9;
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = W9PH4PG2T9;
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
 				INFOPLIST_FILE = "$(SRCROOT)/bienVU/SupportingFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 16;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1117,7 +1125,7 @@
 		};
 		CD052AC41E7AED1F00571E6C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2037A02581B1064819117A10 /* Pods-bienVU.release.xcconfig */;
+			baseConfigurationReference = 48AFC966970427A5797F6DDF /* Pods-bienVU.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_ENTITLEMENTS = bienVU/DansMaRue.entitlements;
@@ -1126,6 +1134,7 @@
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = W9PH4PG2T9;
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = W9PH4PG2T9;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "$(SRCROOT)/bienVU/SupportingFiles/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 16;
@@ -1139,6 +1148,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "e143baa2-8a93-4844-8fd3-331e72330f17";
 				PROVISIONING_PROFILE_SPECIFIER = "bienVU Store";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "bienVU Store Aurélie";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.2;
@@ -1147,7 +1157,7 @@
 		};
 		CD052AC61E7AED1F00571E6C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2DE0413E61D284AE701B541A /* Pods-bienVUTests.debug.xcconfig */;
+			baseConfigurationReference = C4D774249FDC7B6C264C9F02 /* Pods-bienVUTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1167,7 +1177,7 @@
 		};
 		CD052AC71E7AED1F00571E6C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E191A5E11A4A9B790FFCD96B /* Pods-bienVUTests.release.xcconfig */;
+			baseConfigurationReference = 9272A652BE8C6D3777817880 /* Pods-bienVUTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
